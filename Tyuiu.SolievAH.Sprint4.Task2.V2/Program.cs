@@ -3,56 +3,53 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tyuiu.SolievAH.Sprint4.Task1.V8.Lib;
+using Tyuiu.SolievAH.Sprint4.Task2.V2.Lib;
 
-namespace Tyuiu.SolievAH.Sprint4.Task1.V8
+namespace Tyuiu.SolievAH.Sprint4.Task2.V2
 {
     class Program
     {
         static void Main(string[] args)
         {
+            Random rnd = new Random();
             DataService ds = new DataService();
             Console.Title = "Спринт #4 | Выполнил: Солиев А.Х. | СМАРТб-23-1";
             Console.WriteLine("***************************************************************************");
             Console.WriteLine("* Спринт #4                                                               *");
             Console.WriteLine("* Тема: Одномерный статический массив                                     *");
-            Console.WriteLine("* Задание #1                                                              *");
-            Console.WriteLine("* Вариант #8                                                              *");
+            Console.WriteLine("* Задание #2                                                              *");
+            Console.WriteLine("* Вариант #2                                                              *");
             Console.WriteLine("* Выполнил: Солиев А.Х. | СМАРТб-23-1                                     *");
             Console.WriteLine("***************************************************************************");
             Console.WriteLine("* УСЛОВИЕ:                                                                *");
-            Console.WriteLine("* Дан одномерный целочисленный массив на 12 элементов заполненный         *");
-            Console.WriteLine("*  значениями с клавиатуры в диапазоне от 2 до 9 подсчитать сумму         *");
-            Console.WriteLine("* нечетных элементов массива.                                             *");
+            Console.WriteLine("* Дан одномерный целочисленный массив на 11 элементов заполненный         *");
+            Console.WriteLine("* случайными в диапазоне от 1 до 8 подсчитать произведение нечетных       *");
+            Console.WriteLine("* элементов массива.                                                      *");
             Console.WriteLine("*                                                                         *");
             Console.WriteLine("***************************************************************************");
             Console.WriteLine("* ИСХОДНЫЕ ДАННЫЕ:                                                        *");
             Console.WriteLine("***************************************************************************");
-            Console.WriteLine("Заполните массив на 12 элементов");
+            Console.WriteLine("Заполните массив на 11 элементов");
             Console.Write("Введите длину массива: ");
-            int len = Convert.ToInt32(Console.ReadLine());
+            int lenght;
+            lenght = Convert.ToInt32(Console.ReadLine());
+            int[] array = new int[lenght];
 
-            int[] numsArray = new int[len];
-
-            for (int i = 0; i < len; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                Console.Write("Введите значение {0} элемента массива: ", i);
-                numsArray[i] = Convert.ToInt32(Console.ReadLine());
-            }
+                array[i] = rnd.Next(1, 8);
 
+            }
             Console.WriteLine();
-
-            Console.Write("Массив: {");
-            for (int i = 0; i < numsArray.Length; i++)
+            Console.WriteLine("Массив:");
+            for (int i = 0; i < array.Length; i++)
             {
-                Console.Write(numsArray[i]);
-                if (i != numsArray.Length - 1) { Console.Write(", "); }
+                Console.Write(array[i] + "\n");
             }
-            Console.WriteLine("}");
             Console.WriteLine("***************************************************************************");
             Console.WriteLine("* РЕЗУЛЬТАТ:                                                              *");
             Console.WriteLine("***************************************************************************");
-            int res = ds.Calculate(numsArray);
+            int res = ds.Calculate(array);
             Console.WriteLine(res);
             Console.ReadKey();
         }
